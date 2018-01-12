@@ -27,23 +27,12 @@ def round_corners_one_image(original_image, percent_of_side=.3):
     # The 127 for RGB values was used merely for visualizing the mask
     
     # Draw two rectangles to fill interior with opaqueness
-    drawing_layer.polygon([(radius,0),(width-radius,0),
-                            (width-radius,height),(radius,height)],
-                            fill=(127,0,127,255))
-    drawing_layer.polygon([(0,radius),(width,radius),
-                            (width,height-radius),(0,height-radius)],
-                            fill=(127,0,127,255))
+    drawing_layer.polygon([(.5*width,(.4*height)-radius),((.5*width)-radius,.7*height),((.5*width)+radius,.7*height)], fill=(127,0,127,255))
 
     #Draw four filled circles of opaqueness
-    drawing_layer.ellipse((0,0, 2*radius, 2*radius), 
+    drawing_layer.ellipse(((.5*width)-radius,(.4*height)-radius, (.5*width)+radius,((.4*height)+radius)), 
                             fill=(0,127,127,255)) #top left
-    drawing_layer.ellipse((width-2*radius, 0, width,2*radius), 
-                            fill=(0,127,127,255)) #top right
-    drawing_layer.ellipse((0,height-2*radius,  2*radius,height), 
-                            fill=(0,127,127,255)) #bottom left
-    drawing_layer.ellipse((width-2*radius, height-2*radius, width, height), 
-                            fill=(0,127,127,255)) #bottom right
-                         
+
     # Uncomment the following line to show the mask
     # plt.imshow(rounded_mask)
     
